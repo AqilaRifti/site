@@ -1,0 +1,10 @@
+{
+    "score": "score between 1-10",
+    "feedback": {
+      "grammar": "put the grammar feedback here",
+      "vocabulary": "put the vocabulary feedback here",
+      "organization": "put the organization feedback here",
+      "coherence": "put the coherence feedback here"
+    },
+    "suggestions": ["give out multiple suggestions"]
+  }

@@ -1,0 +1,11 @@
+{
+    "questionType": "multiple choice",
+    "question": "Put the multiple choice question here",
+    "options": [
+        "A) Put the options here",
+        "B) Put the options here",
+        "C) Put the options here",
+        "D) Put the options here"
+    ],
+    "answer": "A) Put the correct answer here"
+}
