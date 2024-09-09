@@ -1,14 +1,4 @@
 <script setup>
-import { onMounted } from 'vue';
-onMounted(() => {
-  // Access the hash from the URL
-  const hash = window.location.hash;
-
-  if (hash) {
-    console.log("there is a ahash")
-    
-  }
-});
 useHead({
   title: `API | Beranda`,
   meta: [

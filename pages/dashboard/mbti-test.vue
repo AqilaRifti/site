@@ -19,6 +19,7 @@
                 <aside class="actions" v-show="questionReceived">
                     <UButton @click="show_answers">Cek MBTI</UButton>
                 </aside>
+                <UButton variant="outline">{{ answer }}</UButton>
                 </section>
             </Ucontainer>
         </main>
@@ -52,6 +53,8 @@ const essay = ref("")
 const questionCounts = [5, 10, 15, 20, 25, 30, 40]
 const questionCount = ref(questionCounts[4])
 const questions = ref()
+const answer = ref("")
+
 const selectedLanguage = ref(languages[1])
 const showed_answer = ref(false)
 const show_answers = ref(async () => {
@@ -73,7 +76,7 @@ const show_answers = ref(async () => {
             messages: [{"role": "user", "content": `(Respond in Indonesian Language) Make ${questionCount.value} multiple choice MBTI questions with options in json format like this ${questionJsonFormat} and please response in pure json no text outside of the json`}, {"role": "assistant", "content": `${questions.value}`}, {"role": "user", "content": `I will now respond with my result and you have to tell me whats my mbti in one word. here is the result ${selectedAnswer.value}. and here is my essay about my self ${essay.value}`}]
         })
     });
-    console.log(response)
+    answer.value = response.choices[0].message.content
 })
 
 const selectedAnswer = ref([])

@@ -20,6 +20,7 @@
                     <UButton @click="show_answers">Cek MBTI</UButton>
                 </aside>
                 </section>
+                <UButton variant="outline">{{ answer }}</UButton>
             </Ucontainer>
         </main>
     </NuxtLayout>
@@ -54,6 +55,7 @@ const questionCount = ref(questionCounts[4])
 const questions = ref()
 const selectedLanguage = ref(languages[1])
 const showed_answer = ref(false)
+const answer = ref("")
 const show_answers = ref(async () => {
     const response: any = await $fetch("https://api.fireworks.ai/inference/v1/chat/completions", {
         method: "POST",
@@ -73,7 +75,7 @@ const show_answers = ref(async () => {
             messages: [{"role": "user", "content": `(Respond in Indonesian Language) Make ${questionCount.value} multiple choice Learning style (Auditori/Visual/Kinestetik) questions to determine learning style with options in json format like this ${questionJsonFormat} and please response in pure json no text outside of the json`}, {"role": "assistant", "content": `${questions.value}`}, {"role": "user", "content": `I will now respond with my result and you have to tell me whats my learnings style (auditori/visual/kinestetik)) in one word. here is the result ${selectedAnswer.value}. and here is my essay about my self ${essay.value}`}]
         })
     });
-    console.log(response)
+    answer.value = response.choices[0].message.content
 })
 
 const selectedAnswer = ref([])
