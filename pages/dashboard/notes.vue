@@ -31,7 +31,7 @@ async function fetchNoteById(noteId) {
 async function fetchNotes() {
   const { data, error } = await supabase
     .from('user_notes')
-    .select('id, title, created_at'); // Adjust fields as needed
+    .select('id, title, created_at').eq('user_id', userID);
 
   if (error) {
     console.error('Error fetching notes:', error);
